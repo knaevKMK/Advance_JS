@@ -9,12 +9,12 @@ function solve(moves) {
     let player = "X";
 
     for (const move of moves) {
-        let [x, y] = move.split(" ");
+        let [x, y] = move.split(' ');
         x = Number(x);
         y = Number(y);
 
         if (shape[x][y]) {
-            console.log("This place is already taken. Please choose another!");
+            console.log('This place is already taken. Please choose another!');
             continue;
         }
 
@@ -24,7 +24,7 @@ function solve(moves) {
             console.log(`Player ${player} wins!`);
             break;
         }
-        if (hasFreeCells(shape, player)) {
+        if (shape.every(row => row.every(el => el !== false))) {
             console.log('The game ended! Nobody wins :(');
             break;
         }
@@ -33,14 +33,6 @@ function solve(moves) {
     }
     printBoard(shape);
 
-    function hasFreeCells(shape, player) {
-        for (const row of shape) {
-            if (row.includes(false)) {
-                return false;
-            }
-        }
-        return true;
-    }
 
     function isWinner(shape, player) {
         //check rows
