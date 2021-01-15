@@ -9,14 +9,12 @@ function solve(moves) {
     let player = "X";
 
     for (const move of moves) {
-        let isGameOver = false;
         let [x, y] = move.split(" ");
         x = Number(x);
         y = Number(y);
 
         if (shape[x][y]) {
             console.log("This place is already taken. Please choose another!");
-      //      player = changePlayer(player);
             continue;
         }
 
@@ -30,8 +28,8 @@ function solve(moves) {
             console.log('The game ended! Nobody wins :(');
             break;
         }
-
         player = changePlayer(player);
+
     }
     printBoard(shape);
 
