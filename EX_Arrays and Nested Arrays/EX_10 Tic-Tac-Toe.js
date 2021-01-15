@@ -41,7 +41,7 @@ function solve(moves) {
         if (shape[0][0] == player && shape[0][1] == player && shape[0][2] == player) {
             return true;
         }
-        if (shape[1][0] == player && shape[1][1] == player && shape[2][2] == player) {
+        if (shape[1][0] == player && shape[1][1] == player && shape[1][2] == player) {
             return true;
         }
         if (shape[2][0] == player && shape[2][1] == player && shape[2][2] == player) {
