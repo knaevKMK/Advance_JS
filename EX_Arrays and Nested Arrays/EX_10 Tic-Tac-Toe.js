@@ -13,7 +13,7 @@ function solve(moves) {
         x = Number(x);
         y = Number(y);
 
-        if (shape[x][y]) {
+        if (shape[x][y] !== false) {
             console.log('This place is already taken. Please choose another!');
             continue;
         }
@@ -24,59 +24,48 @@ function solve(moves) {
             console.log(`Player ${player} wins!`);
             break;
         }
+        player = player === 'X' ? 'O' : 'X';
+
         if (shape.every(row => row.every(el => el !== false))) {
             console.log('The game ended! Nobody wins :(');
             break;
         }
-        player = player == 'X' ? 'O' : 'X';
+
 
     }
     printBoard(shape);
 
 
     function isWinner(shape, player) {
-        //check rows
-        for (const row of shape) {
-            let isWinn = true;
-            for (const rowElement of row) {
-                if (rowElement !== player) {
-                    isWinn = false;
-                    break;
-                }
-            }
-            if (isWinn) {
-                return true;
-            }
+        // rows
+        if (shape[0][0] == player && shape[0][1] == player && shape[0][2] == player) {
+            return true;
         }
-
-
-        //check diagonals
-        let diagA = true;
-        let diagB = true;
-        for (let i = 0; i < 3; i++) {
-            if (player !== shape[i][i]) {
-                diagA = false;
-            }
-            if (player !== shape[i][2 - i]) {
-                diagB = false;
-            }
+        if (shape[1][0] == player && shape[1][1] == player && shape[2][2] == player) {
+            return true;
         }
-        if (diagA || diagB) {
+        if (shape[2][0] == player && shape[2][1] == player && shape[2][2] == player) {
+            return true;
+        }
+        //cols
+        if (shape[0][0] == player && shape[1][0] == player && shape[2][0] == player) {
+            return true;
+        }
+        if (shape[0][1] == player && shape[1][1] == player && shape[2][1] == player) {
+            return true;
+        }
+        if (shape[0][2] == player && shape[1][2] == player && shape[2][2] == player) {
             return true;
         }
 
-        //check columns
-        for (let i = 0; i < 3; i++) {
-            let col = true;
-            for (let l = 0; l < 3; l++) {
-                if (shape[i][l] !== player) {
-                    col = false;
-                }
-            }
-            if (col) {
-                return true;
-            }
+        // diag
+        if (shape[0][0] == player && shape[1][1] == player && shape[2][2] == player) {
+            return true;
         }
+        if (shape[0][2] == player && shape[1][1] == player && shape[2][0] == player) {
+            return true;
+        }
+        return false;
     }
 
     function printBoard(shape) {
