@@ -3,7 +3,7 @@ function solve(x, y) {
     result [0] = 1;
     for (let i = 1; i < x; i++) {
         let current= 0;
-        for (let j = 1; j <y ; j++) {
+        for (let j = 1; j <=y ; j++) {
             if (i-j<0){
                 break;
             }
@@ -11,5 +11,7 @@ function solve(x, y) {
         }
         result[i]=current;
     }
-    return result.join(', ')
+    return result
 }
+console.log(solve(6,3));
+console.log(solve(8,2));
