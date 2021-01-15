@@ -28,7 +28,7 @@ function solve(moves) {
             console.log('The game ended! Nobody wins :(');
             break;
         }
-        player = changePlayer(player);
+        player = player == 'X' ? 'O' : 'X';
 
     }
     printBoard(shape);
@@ -83,14 +83,6 @@ function solve(moves) {
         for (const row of shape) {
             console.log(row.join("\t"));
         }
-    }
-
-    function changePlayer(player) {
-        if (player == "X") {
-            return "O";
-        }
-        return "X";
-
     }
 }
 
