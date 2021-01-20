@@ -1,15 +1,19 @@
 function factory(library, orders) {
-    let result = [];
+    let arr = [];
     for (let order of orders) {
-        const composed = Object.assign({}, order.template);
-        for (let part of order.parts) {
-            composed[part] = library[part];
-        }
-        result.push(composed);
-    }
-    return result;
-}
+        let template=order['template'] ;
+        let name= template.name;
+        const obj = {name };
 
+      //  const obj = Object.assign({}, order['template']);
+        for (const part of order.parts) {
+            obj[part] = library[part];
+        }
+        arr.push(obj);
+
+    }
+    return arr;
+}
 const library = {
     print: function () {
         console.log(`${this.name} is printing a page`);

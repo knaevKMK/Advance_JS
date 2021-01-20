@@ -1,5 +1,5 @@
-function collectTaxes(name, population, treasury) {
-    const city = {
+function cityTaxes(name, population, treasury) {
+    let city = {
         name,
         population,
         treasury,
@@ -17,7 +17,7 @@ function collectTaxes(name, population, treasury) {
     return city;
 }
 
-const city = collectTaxes('Tortuga',
+const city = cityTaxes('Tortuga',
     7000,
     15000);
 city.collectTaxes();
@@ -25,10 +25,13 @@ console.log(city.treasury);
 city.applyGrowth(5);
 console.log(city.population);
 
+const city1 = 
+  cityTaxes('Tortuga',
+  7000,
+  15000);
+console.log(city1);
 
-// console.log(solve('Tortuga',
-//     7000,
-//     15000
-// ));
+
+
 
 
