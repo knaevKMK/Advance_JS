@@ -1,3 +1,4 @@
 function search() {
-   // TODO
+  let loolIn= document.getElementById('towns').children;
+    console.log(loolIn);
 }
