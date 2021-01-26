@@ -17,7 +17,5 @@ function deleteByEmail() {
     if(!isDeleted){
         document.getElementById('result').textContent='Not found.';
     }
-
-
   //  document.getElementsByTagName('input')[0].value = '';
 }
