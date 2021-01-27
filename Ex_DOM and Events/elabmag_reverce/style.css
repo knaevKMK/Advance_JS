@@ -26,7 +26,7 @@ tr>td {
     background-color: brown;
 }
 
-.controller>button {
+button {
     display: table-footer-group;
     background-color: black;
     margin: 20px;
