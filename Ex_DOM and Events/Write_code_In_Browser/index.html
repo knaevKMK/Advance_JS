@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+<title>HTML/CSS/JS Playground</title>
+<link rel="stylesheet" href='./bootstrap.min.css' />
+
+<body>
+    <style>
+        textarea {
+            background-color: black;
+            color: white;
+            width: 600px;
+            height: 350px;
+        }
+        
+        iframe {
+            width: 400px;
+            height: 350px
+        }
+    </style>
+    <div class="container">
+        <h3>HTML/CSS/JS Playground</h3>
+        <div class="row">
+            <div class="col-12">
+                <ul id="myTab" class="nav nav-tabs">
+                    <li class="active"><a href="#html" data-toggle="tab"> HTML</a></li>
+                    <li><a href="#css" data-toggle="tab">CSS</a></li>
+                    <li><a href="#js" data-toggle="tab">JS</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade in active" id="html">
+                        <p>
+                            <textarea style="float:left" id="htmlTextarea"></textarea>
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="css">
+                        <p>
+                            <textarea style="float:left" id="cssTextarea"></textarea>
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="js">
+                        <p>
+                            <textarea style="float:left" id="jsTextarea"></textarea>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div>
+                    <iframe id="iFrame"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<script src="./jquery.js"></script>
+<script src="./bootstrap.min.js"></script>
+<script src="./editor.js"></script>
+
+</html>

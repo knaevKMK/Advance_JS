@@ -1,0 +1,36 @@
+.top {
+    background-color: blue;
+    display: inline-block;
+    position: relative;
+}
+
+.top>p {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 500%;
+    font-style: italic;
+}
+
+table {
+    background-color: cadetblue;
+}
+
+tr>td {
+    display: inline-block;
+    border: 5px solid greenyellow;
+}
+
+.controller {
+    background-color: brown;
+}
+
+.controller>button {
+    display: table-footer-group;
+    background-color: black;
+    margin: 20px;
+    padding-block: 22px;
+    font-size: 200%;
+    color: blanchedalmond;
+}

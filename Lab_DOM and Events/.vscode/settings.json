@@ -1,0 +1,12 @@
+{
+    "editor.formatOnSave": true,
+    "files.autoSave": "onWindowChange",
+    "editor.find.autoFindInSelection": "multiline",
+    "debug.allowBreakpointsEverywhere": true,
+    "npm-intellisense.packageSubfoldersIntellisense": true,
+    "npm-intellisense.scanDevDependencies": true,
+    "npm-intellisense.showBuildInLibs": true,
+    "npm-intellisense.importDeclarationType": "",
+    "typescript.tsdk": "",
+    "js/ts.implicitProjectConfig.strictNullChecks": true
+}
