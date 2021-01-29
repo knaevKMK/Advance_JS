@@ -1,15 +1,14 @@
-[
-    {
-        "img":"https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
+[{
+        "img": "https://www.ikea.com/PIAimages/0447583_PE597395_S5.JPG",
         "name": "Sofa",
         "price": "259",
-        "decFactor":"0.4"
+        "decFactor": "0.4"
 
     },
     {
-        "img":"https://cdn.jysk.ca/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/7/0/7011671065_3dr_sonoma.jpg",
+        "img": "https://i.pinimg.com/236x/22/db/92/22db920924138cdaa9273063044ec20a--ikea-bedroom-storage-mirror-door.jpg",
         "name": "Wardrobe",
         "price": "120",
-        "decFactor":"1.2"
+        "decFactor": "1.2"
     }
 ]
