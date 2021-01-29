@@ -29,7 +29,10 @@ function getImage() {
         row = [...row.children];
         for (let cell of row) {
             let rnd = Math.abs(Math.floor(Math.random() * 6));
-            let pos = cell.children[0];
+            let frame = cell.children[0];
+            let pos = frame.children[0];
+
+
             pos.src = imgArray[rnd].src;
             // need animate
         }
