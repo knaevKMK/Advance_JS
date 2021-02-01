@@ -8,6 +8,3 @@
 
 
 module.exports = sum;
-
-console.log(sum('fuck'));
-    console.log(sum([1,2,'november']));
