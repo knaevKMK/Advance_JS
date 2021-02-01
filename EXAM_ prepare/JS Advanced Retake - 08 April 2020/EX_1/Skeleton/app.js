@@ -1,12 +1,12 @@
 function solve() {
-    let [input, open, inProgress, completed] = (document.querySelectorAll('section'));
+    let [input, open, inProgress, completed] = Array.from(document.querySelectorAll('section'));
 
     const task = input.querySelector('#task');
     const description = input.querySelector('#description');
     const time = input.querySelector('#date');
 
     let btnAdd = input.querySelector('#add')
-    btnAdd.type = 'button';
+        //  btnAdd.type = 'button';
 
 
 
@@ -14,8 +14,13 @@ function solve() {
 
         if (e.target.type === 'button') {
 
-            if (e.target == btnAdd) {
-                addTask();
+            if (e.target == btnAdd &&
+                (task.value !== '' && description.value !== '' && time.value !== '')) {
+                addTask(e);
+                task.value = '';
+                description.value = '';
+                time.value = '';
+
             } else {
                 let task = e.target.parentNode;
                 switch (e.target.class) {
@@ -38,8 +43,8 @@ function solve() {
     function completeTask(article) {
         let temp = article;
         deleteTask(article);
-        deleteTask(temp.querySelector('div'))
-        completed.appendChild(temp)
+        deleteTask(temp.querySelector('div'));
+        Array.from(completed.querySelectorAll('div'))[1].appendChild(temp);
     }
 
     function startTask(article) {
@@ -49,10 +54,9 @@ function solve() {
         deleteTask(temp.querySelector('button'))
 
         let btnFin = createTag('button', "Finish", 'orange');
-
         temp.querySelector('div').appendChild(btnFin);
 
-        inProgress.appendChild(temp);
+        Array.from(inProgress.querySelectorAll('div'))[1].appendChild(temp)
     }
 
     function deleteTask(article) {
@@ -66,12 +70,12 @@ function solve() {
             case 'button':
                 temp.textContent = param[1];
                 temp.setAttribute('class', param[2]);
-                //  temp.classList.add(param[2]);
                 temp.class = param[2];
                 temp.setAttribute('type', param[1]);
                 temp.type = param[0];
                 break;
             case 'div':
+                temp.setAttribute('class', param[1]);
                 temp.class = param[1];
                 break;
             case 'article':
@@ -88,34 +92,25 @@ function solve() {
         elements.forEach(el => parent.appendChild(el));
     }
 
-    function addTask() {
-        let art = createTag('article');
-
-        let h3 = createTag('h3', task.value);
-
-        let pDescr = createTag('p', description.value);
-        let pDate = createTag('p', time.value);
-
+    function addTask(e) {
+        e.preventDefault();
         let btnStar = createTag('button', 'Start', 'green');
         let btnDel = createTag('button', "Delete", 'red');
 
         let div = createTag('div', 'flex');
 
         appendChildren(div, btnStar, btnDel);
-        // div.appendChild(btnStar);
-        // div.appendChild(btnDel);
 
 
+        let h3 = createTag('h3', task.value);
+        let pDescr = createTag('p', 'Description: ' + description.value);
+        let pDate = createTag('p', 'Due Date: ' + time.value);
+
+
+        let art = createTag('article');
         appendChildren(art, h3, pDescr, pDate, div);
-        // art.appendChild(h3);
-        // art.appendChild(pDescr);
-        // art.appendChild(pDate);
-        // art.appendChild(div);
 
-        open.querySelectorAll('div')[1].appendChild(art);
+        Array.from(open.querySelectorAll('div'))[1].appendChild(art);
 
     }
-
-
-
 }
