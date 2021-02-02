@@ -31,7 +31,7 @@ describe('charLookUp', function () {
                expect(lookupChar(' ',0)).to.be.equal(' ');
     });
     it('should valid result with valid param', function () {
-        expect(lookupChar('ala bala',5)).to.be.equal('a');
+        expect(lookupChar('qweryal',5)).to.be.equal('a');
     });
     // empty string
     it('should empty string', function () {
