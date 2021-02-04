@@ -1,21 +1,29 @@
 function solve() {
     let [input, open, inProgress, completed] = Array.from(document.querySelectorAll('section'));
-
+    var form = document.getElementsByTagName('form');
+    form[0].addEventListener('onsubmit', function(e) {
+        e.preventDefault();
+    })
+    console.log(form);
     const task = input.querySelector('#task');
     const description = input.querySelector('#description');
     const time = input.querySelector('#date');
 
     let btnAdd = input.querySelector('#add')
-        //  btnAdd.type = 'button';
+    console.log(btnAdd);
+    btnAdd
+    //btnAdd.type = 'button';
 
-
+    let btn = document.getElementById('add');
 
     document.addEventListener('click', function(e) {
 
         if (e.target.type === 'button') {
 
-            if (e.target == btnAdd &&
-                (task.value !== '' && description.value !== '' && time.value !== '')) {
+            if (e.target == btnAdd
+                //  &&
+                //(task.value !== '' && description.value !== '' && time.value !== '')
+            ) {
                 addTask(e);
                 task.value = '';
                 description.value = '';
@@ -93,7 +101,7 @@ function solve() {
     }
 
     function addTask(e) {
-        e.preventDefault();
+
         let btnStar = createTag('button', 'Start', 'green');
         let btnDel = createTag('button', "Delete", 'red');
 

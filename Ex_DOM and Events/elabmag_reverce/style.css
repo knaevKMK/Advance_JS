@@ -1,6 +1,6 @@
 .top {
     background-color: blue;
-    display: inline-block;
+    display: none;
     position: relative;
 }
 
@@ -9,7 +9,7 @@
     text-align: center;
     margin: 0 auto;
     padding: 20px;
-    font-size: 500%;
+    font-size: 300%;
     font-style: italic;
 }
 
@@ -31,6 +31,6 @@ button {
     background-color: black;
     margin: 20px;
     padding-block: 22px;
-    font-size: 200%;
+    font-size: 100%;
     color: blanchedalmond;
 }
