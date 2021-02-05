@@ -13,7 +13,7 @@ class Repository {
         return this.data.size;
     }
 
-    add(entity) {
+        add(entity) {
         this._validate(entity);
         let id = this.nextId();
         this.data.set(id, entity);
