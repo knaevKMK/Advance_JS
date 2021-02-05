@@ -1,22 +1,17 @@
 function solve() {
     let [input, open, inProgress, completed] = Array.from(document.querySelectorAll('section'));
-    var form = document.getElementsByTagName('form');
-    form[0].addEventListener('onsubmit', function(e) {
-        e.preventDefault();
-    })
-    console.log(form);
+
     const task = input.querySelector('#task');
     const description = input.querySelector('#description');
     const time = input.querySelector('#date');
 
     let btnAdd = input.querySelector('#add')
-    console.log(btnAdd);
-    btnAdd
-    //btnAdd.type = 'button';
 
-    let btn = document.getElementById('add');
+    btnAdd.type = 'button';
 
-    document.addEventListener('click', function(e) {
+
+
+    document.addEventListener('click', e => {
 
         if (e.target.type === 'button') {
 
@@ -24,7 +19,24 @@ function solve() {
                 //  &&
                 //(task.value !== '' && description.value !== '' && time.value !== '')
             ) {
-                addTask(e);
+
+                let btnStar = createTag('button', 'Start', 'green');
+                let btnDel = createTag('button', "Delete", 'red');
+
+                let div = createTag('div', 'flex');
+
+                appendChildren(div, btnStar, btnDel);
+
+
+                let h3 = createTag('h3', task.value);
+                let pDescr = createTag('p', 'Description: ' + description.value);
+                let pDate = createTag('p', 'Due Date: ' + time.value);
+
+
+                let art = createTag('article');
+                appendChildren(art, h3, pDescr, pDate, div);
+
+                Array.from(open.querySelectorAll('div'))[1].appendChild(art);
                 task.value = '';
                 description.value = '';
                 time.value = '';
@@ -33,7 +45,8 @@ function solve() {
                 let task = e.target.parentNode;
                 switch (e.target.class) {
                     case 'red':
-                        deleteTask(task.parentNode);
+                        task.parentNode.remove();
+                        //   deleteTask(task.parentNode);
                         break;
                     case 'green':
                         startTask(task.parentNode);
@@ -100,25 +113,5 @@ function solve() {
         elements.forEach(el => parent.appendChild(el));
     }
 
-    function addTask(e) {
 
-        let btnStar = createTag('button', 'Start', 'green');
-        let btnDel = createTag('button', "Delete", 'red');
-
-        let div = createTag('div', 'flex');
-
-        appendChildren(div, btnStar, btnDel);
-
-
-        let h3 = createTag('h3', task.value);
-        let pDescr = createTag('p', 'Description: ' + description.value);
-        let pDate = createTag('p', 'Due Date: ' + time.value);
-
-
-        let art = createTag('article');
-        appendChildren(art, h3, pDescr, pDate, div);
-
-        Array.from(open.querySelectorAll('div'))[1].appendChild(art);
-
-    }
 }
