@@ -5,61 +5,51 @@ function solve() {
     const time = input.querySelector('#date');
 
     let btnAdd = input.querySelector('#add');
-    //  btnAdd.type = 'button';
+    btnAdd.addEventListener('click', onClick);
 
-    window.addEventListener('click', e => {
-        //  e.preventDefault();
-        if (e.target.type === 'button') {
-
-            if (e.target == btnAdd
-                //  &&
-                //(task.value !== '' && description.value !== '' && time.value !== '')
-            ) {
-                addTask(e);
-                task.value = '';
-                description.value = '';
-                time.value = '';
-
-            } else {
-                let task = e.target.parentNode;
-                switch (e.target.class) {
-                    case 'red':
-                        deleteTask(task.parentNode);
-                        break;
-                    case 'green':
-                        startTask(task.parentNode);
-                        break;
-                    case 'orange':
-                        completeTask(task.parentNode);
-                        break;
-                }
-
-            }
-
+    function onClick(e) {
+        e.preventDefault();
+        if (task.value === '' && description.value === '' && time.value === '') {
+            return;
         }
-    })
 
-    function completeTask(article) {
-        let temp = article;
-        deleteTask(article);
-        deleteTask(temp.querySelector('div'));
-        Array.from(completed.querySelectorAll('div'))[1].appendChild(temp);
-    }
+        let btnStar = createTag('button', 'Start', 'green');
+        let btnDel = createTag('button', "Delete", 'red');
+        let div = createTag('div', 'flex');
+        appendChildren(div, btnStar, btnDel);
 
-    function startTask(article) {
+        let h3 = createTag('h3', input.querySelector('#task').value);
+        let pDescr = createTag('p', 'Description: ' + input.querySelector('#description').value);
+        let pDate = createTag('p', 'Due Date: ' + input.querySelector('#date').value);
 
-        let temp = article;
-        deleteTask(article);
-        deleteTask(temp.querySelector('button'))
+        let art = createTag('article');
+        appendChildren(art, h3, pDescr, pDate, div);
 
-        let btnFin = createTag('button', "Finish", 'orange');
-        temp.querySelector('div').appendChild(btnFin);
+        btnStar.addEventListener('click', () => {
+            let temp = art;
+            art.remove();
+            temp.querySelector('button').remove();
 
-        Array.from(inProgress.querySelectorAll('div'))[1].appendChild(temp)
-    }
+            let btnFin = createTag('button', "Finish", 'orange');
+            btnFin.addEventListener('click', () => {
+                let temp = art;
+                art.remove();
+                temp.querySelector('div').remove();
+                Array.from(completed.querySelectorAll('div'))[1].appendChild(temp);
+            });
 
-    function deleteTask(article) {
-        article.remove();
+            temp.querySelector('div').appendChild(btnFin);
+
+            Array.from(inProgress.querySelectorAll('div'))[1].appendChild(temp)
+        });
+        btnDel.addEventListener('click', () => {
+            art.remove();
+        });
+
+        Array.from(open.querySelectorAll('div'))[1].appendChild(art);
+        task.value = '';
+        description.value = '';
+        time.value = '';
     }
 
     function createTag(...param) {
@@ -89,27 +79,5 @@ function solve() {
 
     function appendChildren(parent, ...elements) {
         elements.forEach(el => parent.appendChild(el));
-    }
-
-    function addTask(e) {
-        e.preventDefault();
-        let btnStar = createTag('button', 'Start', 'green');
-        let btnDel = createTag('button', "Delete", 'red');
-
-        let div = createTag('div', 'flex');
-
-        appendChildren(div, btnStar, btnDel);
-
-
-        let h3 = createTag('h3', task.value);
-        let pDescr = createTag('p', 'Description: ' + description.value);
-        let pDate = createTag('p', 'Due Date: ' + time.value);
-
-
-        let art = createTag('article');
-        appendChildren(art, h3, pDescr, pDate, div);
-
-        Array.from(open.querySelectorAll('div'))[1].appendChild(art);
-
     }
 }
