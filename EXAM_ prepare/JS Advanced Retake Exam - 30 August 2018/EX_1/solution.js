@@ -3,7 +3,7 @@ function addDestination() {
     let [city, country, summer, autumn, winter, spring] = (document.querySelectorAll('input'));
     let season = document.getElementById('seasons').selectedOptions[0].value;
     if (city.value === '' || country.value === '') {
-        //   return;
+        return;
     }
     let cellDestination = document.createElement('td');
     cellDestination.textContent = `${city.value}, ${country.value}`
