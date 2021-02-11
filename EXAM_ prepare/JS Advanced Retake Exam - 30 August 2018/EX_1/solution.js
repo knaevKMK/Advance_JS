@@ -1,31 +1,31 @@
 function addDestination() {
 
     let [city, country, summer, autumn, winter, spring] = (document.querySelectorAll('input'));
-    let season = document.getElementById('seasons').selectedOptions[0].value;
+    let season = document.getElementById('seasons').selectedOptions[0];
     if (city.value === '' || country.value === '') {
         return;
     }
     let cellDestination = document.createElement('td');
     cellDestination.textContent = `${city.value}, ${country.value}`
     let cellSeaseon = document.createElement('td');
-    cellSeaseon.textContent = season;
+    cellSeaseon.textContent = season.textContent;
 
     console.log(season)
     let row = document.createElement('tr');
     row.appendChild(cellDestination);
     row.appendChild(cellSeaseon);
 
-    switch (season) {
-        case 'summer':
+    switch (season.textContent) {
+        case 'Summer':
             summer.value = Number(summer.value) + 1;
             break;
-        case 'autumn':
+        case 'Autumn':
             autumn.value = Number(autumn.value) + 1;
             break;
-        case 'winter':
+        case 'Winter':
             winter.value = Number(winter.value) + 1;
             break;
-        case 'spring':
+        case 'Spring':
             spring.value = Number(spring.value) + 1;
             break;
 
