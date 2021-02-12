@@ -16,8 +16,11 @@ function solve() {
     btnAdd.addEventListener('click', e => {
         e.preventDefault();
 
-        const optinos
-        const chooseModule = moduleSelect.selectedOptions[0].textContent.toUpperCase();
+        let chooseModule;
+        Array.from(moduleSelect.children).forEach(option => {
+            if (option.selected) { chooseModule = option.textContent.toUpperCase(); }
+        });;
+
 
 
         if (chooseModule == 'SELECT MODULE...' || name.value == '' || date.value == '') { return; }
@@ -77,19 +80,19 @@ function solve() {
 
 
         // test from judge ( work in event {}, but not work out of event in the function solve?????)
-        let elements = {
-            form: document.getElementsByTagName('form')[0],
-            name: document.querySelector('input[name="lecture-name"]'),
-            date: document.querySelector('input[name="lecture-date"]'),
-            module: document.querySelector('select[name="lecture-module"]'),
-            addBtn: document.querySelector('form button'),
-            modulesDiv: document.querySelector('.modules'),
-            moduleList: () => Array.from(document.querySelectorAll('.module')),
-            listItems: () => Array.from(document.querySelectorAll('.flex')),
-        }
-        console.log(elements.moduleList().length)
-        console.log(elements.moduleList()[0].children[0].textContent)
-        console.log(elements.listItems()[0].children[0].textContent)
-        console.log(elements.listItems()[0].children[1].className)
+        // let elements = {
+        //     form: document.getElementsByTagName('form')[0],
+        //     name: document.querySelector('input[name="lecture-name"]'),
+        //     date: document.querySelector('input[name="lecture-date"]'),
+        //     module: document.querySelector('select[name="lecture-module"]'),
+        //     addBtn: document.querySelector('form button'),
+        //     modulesDiv: document.querySelector('.modules'),
+        //     moduleList: () => Array.from(document.querySelectorAll('.module')),
+        //     listItems: () => Array.from(document.querySelectorAll('.flex')),
+        // }
+        // console.log(elements.moduleList().length)
+        // console.log(elements.moduleList()[0].children[0].textContent)
+        // console.log(elements.listItems()[0].children[0].textContent)
+        // console.log(elements.listItems()[0].children[1].className)
     })
 }
