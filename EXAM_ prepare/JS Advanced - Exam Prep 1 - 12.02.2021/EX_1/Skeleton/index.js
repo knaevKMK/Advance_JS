@@ -73,6 +73,8 @@ function solve() {
         date.value = '';
         moduleSelect.selectedIndex = 0
 
+
+        // test from judge ( work in event {}, but not work out of event in the function solve?????)
         let elements = {
             form: document.getElementsByTagName('form')[0],
             name: document.querySelector('input[name="lecture-name"]'),
