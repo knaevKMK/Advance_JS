@@ -1,61 +1,91 @@
 function solve() {
     // sections
-    let [trainigs, admin] = document.querySelectorAll('section');
-    // input fields NAME & DATE
-    let [lecture, date] = admin.querySelectorAll('input')
-        // moduels Select OPTIONS
-    let module = admin.querySelector('select');
-    // // button add
-    // const modules = {};
-    // Array.from(module.children).forEach(modul => modules[modul.textContent.toUpperCase()] = []);
+    let [trainings, admin] = document.querySelectorAll('section');
 
-    // console.log(modules)
+    //get input fieldds + select-options = button
+    let [name, date] = admin.querySelectorAll('input');
+    let moduleSelect = admin.querySelector('select');
     let btnAdd = admin.querySelector('button');
-    //
+
+
+    //temp data work with map dof div module and array for li
+    let modules = trainings.querySelector('.modules');
+
+
 
     btnAdd.addEventListener('click', e => {
         e.preventDefault();
-        let selected = module.selectedOptions[0].textContent.toUpperCase();
-        let title;
-        //title
+        const chooseModule = moduleSelect.selectedOptions[0].textContent.toUpperCase();
 
 
-        title = document.createElement('h3')
-        title.textContent = selected + '-MODULE';
+        if (chooseModule == 'SELECT MODULE...' || name.value == '' || date.value == '') { return; }
+        let div;
+        let ul;
 
-        //button Delete
-        let btnDell = document.createElement('button');
-        btnDell.className = 'red';
-        btnDell.textContent = 'Del'
-        btnDell.addEventListener('click', e => {
-            let target = e.target.parentNode.parentNode;
-            e.target.parentNode.remove();
-            if (target.innerHTML === '') {
-                target.parentNode.remove()
+        for (let _div of modules.children) {
+
+            if (_div.childNodes[0].textContent.replace('-MODULE', '') === chooseModule) {
+                div = _div;
+                ul = _div.childNodes[1];
+                break;
+            }
+        }
+
+        if (div == undefined) {
+            div = document.createElement('div');
+            div.className = 'module';
+
+            let h3 = document.createElement('h3');
+            h3.textContent = chooseModule + '-MODULE';
+            div.appendChild(h3);
+
+            ul = document.createElement('ul');
+            div.appendChild(ul);
+
+            modules.appendChild(div)
+
+        }
+        // create li with (h4 and button Delete), append to ul
+        let li = document.createElement('li');
+        li.className = 'flex';
+
+        let h4 = document.createElement('h4');
+        h4.textContent = name.value.toUpperCase() + '-' + date.value.replace('T', ' - ').replace(/-/g, '/');
+        li.appendChild(h4);
+
+        let btnDel = document.createElement('button');
+        btnDel.className = 'red';
+        btnDel.textContent = 'Del';
+        // TODO add evetnLisenre
+        btnDel.addEventListener('click', e => {
+            li.remove();
+            if (ul.innerHTML === '') {
+                div.remove();
             }
         })
 
-        //h4 title+date
-        let lectureTitle = document.createElement('h4')
-        lectureTitle.textContent = lecture.value.toUpperCase() + ' - ' + date.value.replace(/-/g, '/').replace('T', ' - ');
+        li.appendChild(btnDel);
 
-        //li+ul
-        let li = document.createElement('li');
-        li.className = 'flex';
-        li.appendChild(lectureTitle);
-        li.appendChild(btnDell);
-
-        let ul = document.createElement('ul')
         ul.appendChild(li);
-        // div Module.... + appened to HTML
-        let divModul = document.createElement('div');
-        divModul.className = 'module';
-        divModul.appendChild(title);
-        divModul.appendChild(ul);
-        trainigs.querySelector('.modules').appendChild(divModul);
 
 
-        module.selectedIndex = -1;
+        name.value = '';
+        date.value = '';
+        moduleSelect.selectedIndex = 0
+
+        let elements = {
+            form: document.getElementsByTagName('form')[0],
+            name: document.querySelector('input[name="lecture-name"]'),
+            date: document.querySelector('input[name="lecture-date"]'),
+            module: document.querySelector('select[name="lecture-module"]'),
+            addBtn: document.querySelector('form button'),
+            modulesDiv: document.querySelector('.modules'),
+            moduleList: () => Array.from(document.querySelectorAll('.module')),
+            listItems: () => Array.from(document.querySelectorAll('.flex')),
+        }
+        console.log(elements.moduleList().length)
+        console.log(elements.moduleList()[0].children[0].textContent)
+        console.log(elements.listItems()[0].children[0].textContent)
+        console.log(elements.listItems()[0].children[1].className)
     })
-
-};
+}
