@@ -1,7 +1,11 @@
 function addDestination() {
 
     let [city, country, summer, autumn, winter, spring] = (document.querySelectorAll('input'));
-    let season = document.getElementById('seasons').selectedOptions[0];
+    let season;
+    let options = document.getElementById('seasons');
+    Array.from(options.children).forEach(option => {
+        if (option.selected) { season = option; }
+    });;
     if (city.value === '' || country.value === '') {
         return;
     }
@@ -10,7 +14,7 @@ function addDestination() {
     let cellSeaseon = document.createElement('td');
     cellSeaseon.textContent = season.textContent;
 
-    console.log(season)
+
     let row = document.createElement('tr');
     row.appendChild(cellDestination);
     row.appendChild(cellSeaseon);
@@ -33,5 +37,5 @@ function addDestination() {
     document.getElementById('destinationsList').appendChild(row)
     city.value = '';
     country.value = '';
-    document.getElementById('seasons').selectedIndex = 0
+    // document.getElementById('seasons').selectedIndex = 0
 }
