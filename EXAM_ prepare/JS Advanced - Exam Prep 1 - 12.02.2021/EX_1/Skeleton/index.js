@@ -15,6 +15,8 @@ function solve() {
 
     btnAdd.addEventListener('click', e => {
         e.preventDefault();
+
+        const optinos
         const chooseModule = moduleSelect.selectedOptions[0].textContent.toUpperCase();
 
 
