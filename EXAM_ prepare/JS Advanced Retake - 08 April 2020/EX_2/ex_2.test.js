@@ -41,7 +41,7 @@ describe("Tests Repo", function () {
 
     describe(' getId(id)', function () {
         it('should Error non exist id', function () {
-            expect(()=>expect.getId(1)).throw(Error);
+            expect(()=>result.getId(1)).throw(Error);
         });
         it('should return entry woth valid id', function () {
             result.add(entry);
