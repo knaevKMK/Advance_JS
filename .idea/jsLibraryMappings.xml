@@ -4,7 +4,6 @@
     <file url="PROJECT" libraries="{@types/chai, @types/mocha}" />
     <includedPredefinedLibrary name="Node.js Core" />
     <excludedPredefinedLibrary name="HTML" />
-    <excludedPredefinedLibrary name="JS_Advance/EXAM_ prepare/JS Advanced Retake - 08 April 2020/EX_2/Resources/node_modules" />
     <excludedPredefinedLibrary name="JS_Advance/node_modules" />
   </component>
 </project>
