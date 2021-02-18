@@ -21,6 +21,9 @@ function onlineShop(selector) {
     </div>`;
     $(selector).html(form);
 
+
+
+
     let [product, bgn, qty, capacity, price] = document.querySelectorAll('.block input')
     let ul = document.querySelector('.block .display');
     let btnSbm = document.getElementById('submit');
