@@ -5,6 +5,11 @@ function solve() {
     let date = _add.querySelector('#date');
     let descr = _add.querySelector('#description');
 
+    console.log(_add.children[1]);
+    console.log(_InProgress.children[1]);
+    console.log(_Open.children[1]);
+    console.log(_Complete.children[1]);
+
     document.addEventListener('click', e => {
         switch (e.target.textContent) {
 
@@ -42,5 +47,6 @@ function solve() {
                 _Complete.children[1].appendChild(artP);
                 break;
         }
+
     })
 }
