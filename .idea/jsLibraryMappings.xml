@@ -3,7 +3,5 @@
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{@types/chai, @types/mocha}" />
     <includedPredefinedLibrary name="Node.js Core" />
-    <excludedPredefinedLibrary name="HTML" />
-    <excludedPredefinedLibrary name="JS_Advance/node_modules" />
   </component>
 </project>

@@ -9,7 +9,7 @@ class ChristmasDinner {
 
     _validateBudget(value) {
         if (value < 0) {
-            throw new Error("The budget cannot be a negative number")
+            throw new Error("The budget cannot be a negative number");
         }
         return value;
     }
@@ -45,13 +45,7 @@ class ChristmasDinner {
     }
 
     inviteGuests(name, dish) {
-        let dis;
-        this.dishes.forEach(di => {
-
-            if (di.recipeName === dish) {
-                dis = di;
-            }
-        });
+        let dis=this.dishes.some(x=>x.recipeName==dish);
 
         if (!dis) {
             throw new Error('We do not have this dish');
