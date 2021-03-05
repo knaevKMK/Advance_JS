@@ -3,25 +3,33 @@ class Story {
     constructor(title, creator) {
         this.title = title;
         this.creator = creator;
-        this.comments = [];
+        this._comments = [];
 
         // this._likes = [];
         //- private property (empty array by default)
-        this.likes = [];
+        this._likes = [];
         //- private property (empty array by default)
     }
 
     set comments(value) {
-        this._comments = [];
+        this._comments = value;
     }
+
+    set likes(value) {
+        this._likes = value;
+    }
+
+// set comments(value) {
+    //     this._comments = [];
+    // }
 
     get comments() {
         return this._comments;
     }
 
-    set likes(value) {
-        this._likes = [];
-    }
+    // set likes(value) {
+    //     this._likes = [];
+    // }
 
     get likes() {
 
